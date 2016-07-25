@@ -1,10 +1,15 @@
-*.m4 linguist-vendored=false
-*.sh linguist-vendored=false
-*.log linguist-vendored=false
-*.1 linguist-vendored=false
-*.2 linguist-vendored=false
-*.am linguist-vendored=false
-*.in linguist-vendored=false
+aclocal.m4 linguist-vendored=false
+autoscan.log linguist-vendored=false
+config.log linguist-vendored=false
+config.status linguist-vendored=false
+Makefile.am linguist-vendored=false
+Makefile.in linguist-vendored=false
+autogen.sh linguist-vendored=false
 
-
-
+output.0 linguist-vendored=false
+output.1 linguist-vendored=false
+output.2 linguist-vendored=false
+requests linguist-vendored=false
+traces.0 linguist-vendored=false
+traces.1 linguist-vendored=false
+traces.2 linguist-vendored=false
