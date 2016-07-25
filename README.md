@@ -21,9 +21,9 @@ C# | Maybe Planned
 
 Outputs | Support
 --- | ---
-X86 Assembly | Working on it
-X64 Assembly | Planned
-Various Arm Assemblies | Planned
+X86 Instruction set | Working on it
+X64 Instruction set | Planned
+Various Arm Instruction set | Planned
 .Net Assemblies | Planned 
 
 ## License - GNU GPL 2
