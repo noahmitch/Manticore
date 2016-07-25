@@ -1,6 +1,6 @@
 How do I install the Manticore compiler?
 The answer: For now it is really easy, here are the steps:
 
-1. change directory to the build directory
+1. run "./configure"
 2. run "make"
 3. run "make install"
