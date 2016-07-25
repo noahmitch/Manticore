@@ -3,4 +3,8 @@
 *.log linguist-lnaguage=None
 *.1 linguist-lnaguage=None
 *.2 linguist-lnaguage=None
+*.am linguist-lnaguage=None
+*.in linguist-lnaguage=None
+
+
 
