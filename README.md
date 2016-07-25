@@ -17,7 +17,7 @@ C | Working on it
 C++ | Planned
 C# | Maybe Planned
 
-#### What back end do you support?
+#### What back ends do you support?
 
 Outputs | Support
 --- | ---
