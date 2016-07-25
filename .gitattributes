@@ -1,3 +1,6 @@
 *.m4 linguist-lnaguage=None
 *.sh linguist-lnaguage=None
 *.log linguist-lnaguage=None
+*.1 linguist-lnaguage=None
+*.2 linguist-lnaguage=None
+
