@@ -67,6 +67,7 @@ int main (int argc, char **args)
 		lexer.add (text);
 		//lexer.print ();
 		lang.preprocess (lexer);
+		Lexer::
 	}
 
 	return 0;

@@ -1,3 +1,9 @@
 #! /bin/sh
 
-aclocal && automake --add-missing && autoconf
+scripts/prepare.sh
+
+aclocal
+
+automake --add-missing
+
+autoconf
