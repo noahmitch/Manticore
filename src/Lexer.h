@@ -1,5 +1,5 @@
 /*
- Language.cpp
+ Lexer.h
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,35 +22,40 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "Language.h"
+#ifndef LEXER_H_
+#define LEXER_H_
 
-namespace Language
+#include <iostream>
+#include <vector>
+
+namespace Lexer
 {
-	std::vector<Language> languages = std::vector<Language> ();
-
-	Language::Language ()
+	class Word
 	{
-		extensions = std::vector<std::string> ();
-	}
+		public:
+			Word (std::string val, int line=-1, int col=-1);
 
-	Language::~Language ()
+			std::string text;
+			int line;
+			int col;
+	};
+
+	class Lexer
 	{
+		public:
+			Lexer ();
+			virtual ~Lexer ();
 
-	}
+			Word &operator[] (int i);
 
+			std::vector<Word> words;
+			Word get (int i);
+			void add (std::string text);
+			void print ();
 
-	Language getLanguage (std::string extension)
-	{
-		for (int i = 0; i < languages.size (); i++)
-		{
-			for (int j = 0; j < languages[i].extensions.size (); j++)
-			{
-				if (languages[i].extensions[j] == extension)
-					return languages[i];
-			}
-		}
-		// no language s available
-		error::fatalError ("No support for file type '" + extension + "' yet...");
-	}
+			int place;
+	};
 
-} /* namespace Language */
+} /* namespace Lexer */
+
+#endif /* LEXER_H_ */

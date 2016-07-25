@@ -1,5 +1,5 @@
 /*
- Language.h
+ Language.cpp
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,32 +22,42 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef LANGUAGE_H_
-#define LANGUAGE_H_
-
-#include <iostream>
-#include <vector>
-#include <dirent.h>
-
-#include "error.h"
+#include "Language.h"
 
 namespace Language
 {
+	std::vector<std::string> defaultDefinitions;
 
-	class Language
+	std::vector<Language> languages = std::vector<Language> ();
+
+	Language::Language ()
 	{
-		public:
-			Language ();
-			virtual ~Language ();
+		extensions = std::vector<std::string> ();
+	}
 
-			std::string name;
-			std::vector<std::string> extensions;
-	};
+	Language::~Language ()
+	{
 
-	extern std::vector<Language> languages;
+	}
 
-	Language getLanguage (std::string extension);
+	void Language::preprocess (Lexer::Lexer lexer, std::vector<std::string> definitions)
+	{
+		std::cout << definitions.size () << std::endl;
+	}
+
+
+	Language getLanguage (std::string extension)
+	{
+		for (int i = 0; i < languages.size (); i++)
+		{
+			for (int j = 0; j < languages[i].extensions.size (); j++)
+			{
+				if (languages[i].extensions[j] == extension)
+					return languages[i];
+			}
+		}
+		// no language s available
+		error::fatalError ("No support for file type '" + extension + "' yet...");
+	}
 
 } /* namespace Language */
-
-#endif /* LANGUAGE_H_ */

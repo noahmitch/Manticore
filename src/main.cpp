@@ -32,6 +32,7 @@
 
 void init ()
 {
+	Language::initializeLanguage ();
 	Language::C clang = Language::C ();
 	Language::languages.push_back(clang);
 }
@@ -64,11 +65,8 @@ int main (int argc, char **args)
 		Lexer::Lexer lexer = Lexer::Lexer ();
 
 		lexer.add (text);
-
-		for (int j = 0; j < lexer.words.size (); j++)
-		{
-			std::cout << lexer.words[j].text << " line: " << lexer.words[j].line << " col: " << lexer.words[j].col << std::endl;
-		}
+		//lexer.print ();
+		lang.preprocess (lexer);
 	}
 
 	return 0;

@@ -112,4 +112,12 @@ namespace Lexer
 		}
 	}
 
+	void Lexer::print ()
+	{
+		for (int j = 0; j < words.size (); j++)
+		{
+			std::cout << words[j].text << " line: " << words[j].line << " col: " << words[j].col << std::endl;
+		}
+	}
+
 } /* namespace Lexer */

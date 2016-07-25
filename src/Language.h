@@ -1,5 +1,5 @@
 /*
- Lexer.h
+ Language.h
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,39 +22,46 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef LEXER_H_
-#define LEXER_H_
+#ifndef LANGUAGE_H_
+#define LANGUAGE_H_
 
 #include <iostream>
 #include <vector>
+#include <dirent.h>
 
-namespace Lexer
+#include "Lexer.h"
+#include "error.h"
+
+namespace Language
 {
-	class Word
+	extern std::vector<std::string> defaultDefinitions;
+
+	inline void initializeLanguage ()
+	{
+		defaultDefinitions = std::vector<std::string> ();
+		#ifdef __linux__
+			defaultDefinitions.push_back("__linux__");
+		#elif _WIN32
+			defaultDefinitions.push_back ("_WIN32");
+		#endif
+	}
+
+	class Language
 	{
 		public:
-			Word (std::string val, int line=-1, int col=-1);
+			Language ();
+			virtual ~Language ();
 
-			std::string text;
-			int line;
-			int col;
+			void preprocess (Lexer::Lexer lexer, std::vector<std::string> definitions = defaultDefinitions);
+
+			std::string name;
+			std::vector<std::string> extensions;
 	};
 
-	class Lexer
-	{
-		public:
-			Lexer ();
-			virtual ~Lexer ();
+	extern std::vector<Language> languages;
 
-			Word &operator[] (int i);
+	Language getLanguage (std::string extension);
 
-			std::vector<Word> words;
-			Word get (int i);
-			void add (std::string text);
+} /* namespace Language */
 
-			int place;
-	};
-
-} /* namespace Lexer */
-
-#endif /* LEXER_H_ */
+#endif /* LANGUAGE_H_ */
