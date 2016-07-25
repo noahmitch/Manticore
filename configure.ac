@@ -5,7 +5,7 @@ AC_PREREQ([2.69])
 AC_INIT([manticore], [0.0.1], [https://github.com/noahmitch/Manticore/issues])
 AM_INIT_AUTOMAKE([manticore], [0.0.1])
 AC_CONFIG_SRCDIR([src/C.h])
-AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_HEADERS([src/config.h])
 
 # Checks for programs.
 AC_PROG_CXX
