@@ -1,10 +1,10 @@
-*.m4 linguist-vendored=None
-*.sh linguist-vendored=None
-*.log linguist-vendored=None
-*.1 linguist-vendored=None
-*.2 linguist-vendored=None
-*.am linguist-vendored=None
-*.in linguist-vendored=None
+*.m4 linguist-vendored=false
+*.sh linguist-vendored=false
+*.log linguist-vendored=false
+*.1 linguist-vendored=false
+*.2 linguist-vendored=false
+*.am linguist-vendored=false
+*.in linguist-vendored=false
 
 
 
