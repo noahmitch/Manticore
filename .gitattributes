@@ -2,5 +2,5 @@ autom4te.cache/* linguist-vendored
 *.am linguist-vendored
 *.in linguist-vendored
 configure linguist-vendored
-config.status
+config.status linguist-vendored
 *.sh linguist-vendored
