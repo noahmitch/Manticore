@@ -1,5 +1,5 @@
 /*
- fs.h
+ error.h
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,19 +22,17 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef FS_H_
-#define FS_H_
+#ifndef ERROR_H_
+#define ERROR_H_
 
-#include <string>
-#include <vector>
-#include <fstream>
+#include <iostream>
+#include <cstdlib>
 
-namespace fs
+namespace error
 {
-	std::string open (std::string file);
-	bool exists (std::string file);
 
-	std::string getFileExtension (std::string file);
-} /* namespace fs */
+	void fatalError (std::string msg, int err=1);
 
-#endif /* FS_H_ */
+} /* namespace error */
+
+#endif /* ERROR_H_ */

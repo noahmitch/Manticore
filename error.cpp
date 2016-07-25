@@ -1,5 +1,5 @@
 /*
- fs.h
+ error.cpp
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,19 +22,15 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef FS_H_
-#define FS_H_
+#include "error.h"
 
-#include <string>
-#include <vector>
-#include <fstream>
-
-namespace fs
+namespace error
 {
-	std::string open (std::string file);
-	bool exists (std::string file);
 
-	std::string getFileExtension (std::string file);
-} /* namespace fs */
+	void fatalError (std::string msg, int err)
+	{
+		std::cout << "Manticore Error: " << msg << std::endl;
+		exit (err);
+	}
 
-#endif /* FS_H_ */
+} /* namespace error */

@@ -1,5 +1,5 @@
 /*
- fs.h
+ C.h
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,19 +22,21 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef FS_H_
-#define FS_H_
+#ifndef C_H_
+#define C_H_
 
-#include <string>
-#include <vector>
-#include <fstream>
+#include "Language.h"
 
-namespace fs
+namespace Language
 {
-	std::string open (std::string file);
-	bool exists (std::string file);
 
-	std::string getFileExtension (std::string file);
-} /* namespace fs */
+	class C: public Language
+	{
+		public:
+			C ();
+			virtual ~C ();
+	};
 
-#endif /* FS_H_ */
+} /* namespace Language */
+
+#endif /* C_H_ */

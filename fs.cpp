@@ -29,18 +29,61 @@ namespace fs
 
 	std::string open (std::string file)
 	{
-		std::ifstream is(file.c_str ());
-		is.seekg(0, std::ios_base::end);
-		std::size_t size=is.tellg();
-		is.seekg(0, std::ios_base::beg);
-		std::string v = "";
-		v.reserve (size);
-		// Load the data
-		is.read((char*) &v[0], size);
-		// Close the file
-		is.close();
 
-		return v;
+		std::ifstream t(file.c_str ());
+		return std::string ((std::istreambuf_iterator<char>(t)),
+		                 std::istreambuf_iterator<char>());
 	}
 
+	bool exists (std::string file)
+	{
+		if (FILE *f = fopen (file.c_str (), "r"))
+		{
+				fclose(f);
+				return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	std::string getFileExtension (std::string file)
+	{
+		std::vector<std::string> sections = std::vector<std::string> ();
+		std::string toks;
+		for (int i = 0; i < file.size (); i++)
+		{
+			if (file[i] == '/')
+			{
+				sections.push_back (toks);
+				toks = "";
+			}
+			else if (i == file.size () - 1)
+			{
+				sections.push_back (toks + file[i]);
+				toks = "";
+			}
+			else
+			{
+				toks += file[i];
+			}
+		}
+
+		toks = "";
+		bool started = false;
+		// this is meant to skip the first period in the file's extension
+		for (int i = 0; i < sections[sections.size () - 1].size (); i++)
+		{
+			if (started)
+				toks += sections[sections.size () - 1][i];
+
+			if (sections[sections.size () - 1][i] == '.')
+			{
+				started = true;
+			}
+		}
+
+		return toks;
+	}
 } /* namespace fs */

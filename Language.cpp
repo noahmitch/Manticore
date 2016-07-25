@@ -1,5 +1,5 @@
 /*
- fs.h
+ Language.cpp
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,19 +22,35 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef FS_H_
-#define FS_H_
+#include "Language.h"
 
-#include <string>
-#include <vector>
-#include <fstream>
-
-namespace fs
+namespace Language
 {
-	std::string open (std::string file);
-	bool exists (std::string file);
+	std::vector<Language> languages = std::vector<Language> ();
 
-	std::string getFileExtension (std::string file);
-} /* namespace fs */
+	Language::Language ()
+	{
+		extensions = std::vector<std::string> ();
+	}
 
-#endif /* FS_H_ */
+	Language::~Language ()
+	{
+
+	}
+
+
+	Language getLanguage (std::string extension)
+	{
+		for (int i = 0; i < languages.size (); i++)
+		{
+			for (int j = 0; j < languages[i].extensions.size (); j++)
+			{
+				if (languages[i].extensions[j] == extension)
+					return languages[i];
+			}
+		}
+		// no language s available
+		error::fatalError ("No support for file type '" + extension + "' yet...");
+	}
+
+} /* namespace Language */

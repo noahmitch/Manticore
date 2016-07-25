@@ -1,5 +1,5 @@
 /*
- fs.h
+ Lexer.h
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,19 +22,39 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef FS_H_
-#define FS_H_
+#ifndef LEXER_H_
+#define LEXER_H_
 
-#include <string>
+#include <iostream>
 #include <vector>
-#include <fstream>
 
-namespace fs
+namespace Lexer
 {
-	std::string open (std::string file);
-	bool exists (std::string file);
+	class Word
+	{
+		public:
+			Word (std::string val, int line=-1, int col=-1);
 
-	std::string getFileExtension (std::string file);
-} /* namespace fs */
+			std::string text;
+			int line;
+			int col;
+	};
 
-#endif /* FS_H_ */
+	class Lexer
+	{
+		public:
+			Lexer ();
+			virtual ~Lexer ();
+
+			Word &operator[] (int i);
+
+			std::vector<Word> words;
+			Word get (int i);
+			void add (std::string text);
+
+			int place;
+	};
+
+} /* namespace Lexer */
+
+#endif /* LEXER_H_ */

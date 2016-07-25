@@ -1,5 +1,5 @@
 /*
- fs.h
+ C.cpp
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,19 +22,22 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef FS_H_
-#define FS_H_
+#include "C.h"
 
-#include <string>
-#include <vector>
-#include <fstream>
-
-namespace fs
+namespace Language
 {
-	std::string open (std::string file);
-	bool exists (std::string file);
 
-	std::string getFileExtension (std::string file);
-} /* namespace fs */
+	C::C () : Language ()
+	{
+		name = "C";
+		extensions = std::vector<std::string> ();
+		extensions.push_back ("c"); // c source
+		extensions.push_back ("h"); // c header
+	}
 
-#endif /* FS_H_ */
+	C::~C ()
+	{
+		// TODO Auto-generated destructor stub
+	}
+
+} /* namespace Language */

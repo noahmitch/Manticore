@@ -1,5 +1,5 @@
 /*
- fs.h
+ Language.h
  
  Created on: Jul 24, 2016
  Author: Noah B. Mitchell
@@ -22,19 +22,32 @@
  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef FS_H_
-#define FS_H_
+#ifndef LANGUAGE_H_
+#define LANGUAGE_H_
 
-#include <string>
+#include <iostream>
 #include <vector>
-#include <fstream>
+#include <dirent.h>
 
-namespace fs
+#include "error.h"
+
+namespace Language
 {
-	std::string open (std::string file);
-	bool exists (std::string file);
 
-	std::string getFileExtension (std::string file);
-} /* namespace fs */
+	class Language
+	{
+		public:
+			Language ();
+			virtual ~Language ();
 
-#endif /* FS_H_ */
+			std::string name;
+			std::vector<std::string> extensions;
+	};
+
+	extern std::vector<Language> languages;
+
+	Language getLanguage (std::string extension);
+
+} /* namespace Language */
+
+#endif /* LANGUAGE_H_ */

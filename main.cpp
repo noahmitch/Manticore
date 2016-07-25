@@ -24,7 +24,52 @@
 #include <iostream>
 #include <vector>
 
-int main ()
-{
+#include "fs.h"
+#include "error.h"
+#include "Language.h"
+#include "C.h"
+#include "Lexer.h"
 
+void init ()
+{
+	Language::C clang = Language::C ();
+	Language::languages.push_back(clang);
+}
+
+int main (int argc, char **args)
+{
+	if (argc == 1)
+		error::fatalError ("I need input");
+
+	init ();
+
+	std::vector<std::string> files = std::vector<std::string> ();
+
+	for (int i = 1; i < argc; i++)
+	{
+		std::string arg = args[i];
+		if (fs::exists (arg))
+		{
+			files.push_back (arg);
+		}
+	}
+
+	for (int i = 0; i < files.size (); i++)
+	{
+		std::string text = fs::open (files[i]);
+		std::string extension = fs::getFileExtension (files[i]);
+
+		Language::Language lang = Language::getLanguage (extension);
+
+		Lexer::Lexer lexer = Lexer::Lexer ();
+
+		lexer.add (text);
+
+		for (int j = 0; j < lexer.words.size (); j++)
+		{
+			std::cout << lexer.words[j].text << " line: " << lexer.words[j].line << " col: " << lexer.words[j].col << std::endl;
+		}
+	}
+
+	return 0;
 }
