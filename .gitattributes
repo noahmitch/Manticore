@@ -1,10 +1,10 @@
-*.m4 linguist-lnaguage=None
-*.sh linguist-lnaguage=None
-*.log linguist-lnaguage=None
-*.1 linguist-lnaguage=None
-*.2 linguist-lnaguage=None
-*.am linguist-lnaguage=None
-*.in linguist-lnaguage=None
+*.m4 linguist-language=None
+*.sh linguist-language=None
+*.log linguist-language=None
+*.1 linguist-language=None
+*.2 linguist-language=None
+*.am linguist-language=None
+*.in linguist-language=None
 
 
 
